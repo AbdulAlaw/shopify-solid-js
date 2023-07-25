@@ -1,0 +1,21 @@
+{
+  "name": "with-solid",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "adastra dev -s rca-checkout-test-store.myshopify.com",
+    "build": "adastra build",
+    "preview": "adastra preview",
+    "check": "adastra check"
+  },
+  "dependencies": {
+    "solid-js": "^1.6.11",
+    "swiper": "^10.0.4"
+  },
+  "devDependencies": {
+    "adastra-cli": "latest",
+    "adastra-plugin": "latest",
+    "vite": "^4.1.4",
+    "vite-plugin-solid": "^2.5.0"
+  }
+}

@@ -1,0 +1,70 @@
+<div class="product-card">
+  <div class="product-meida">
+    <img
+      src="{{ card_product.featured_media | image_url: width: 250 }}"
+      alt="{{ card_product.featured_media.alt | escape }}"
+      class="motion-reduce"
+      {% unless lazy_load == false %}
+        loading="lazy"
+      {% endunless %}
+      width="{{ card_product.featured_media.width }}"
+      height="{{ card_product.featured_media.height }}"
+    >
+  </div>
+  <div class="product-info">
+    <h2>{{card_product.title}}</h2>
+    <span>{{card_product.price | money }}</span>
+  </div>
+  			<form
+        action="/cart/add"
+        method="post"
+        enctype="multipart/form-data"
+        id="AddToCartForm--{{card_product.id}}"
+      >
+        <div class="mb-8">
+          <label
+            for="productSelect--{{card_product.id}}"
+            class="sr-only"
+          >
+            {{ 'products.product.product_variants' | t }}
+          </label>
+          <select
+            name="id"
+            id="productSelect--{{card_product.id}}"
+          >
+            {% for variant in card_product.variants %}
+              {% if variant.available %}
+                <option value="{{ variant.id }}">
+                  {{ variant.title }} - {{ variant.price | money_with_currency }}
+                </option>
+              {% else %}
+                <option disabled="disabled">{{ variant.title }} - sold out</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="mb-8">
+          <label for="Quantity--{{card_product.id}}">
+            {{ 'products.product.quantity.label' | t }}
+          </label>
+          <input
+            type="number"
+            id="Quantity--{{card_product.id}}"
+            name="quantity"
+            value="1"
+            min="1"
+          >
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            name="add"
+            class="button w-full"
+          >
+            {{ 'products.product.add_to_cart' | t }}
+          </button>
+        </div>
+      </form>
+</div>

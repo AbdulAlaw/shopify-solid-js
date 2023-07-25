@@ -1,0 +1,22 @@
+{
+  "name": "header",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "heading": ""
+      }
+    },
+    "2b6b2470-35fd-4755-91a9-88dde7888c4c": {
+      "type": "cart-drawer",
+      "settings": {
+        "heading": ""
+      }
+    }
+  },
+  "order": [
+    "header",
+    "2b6b2470-35fd-4755-91a9-88dde7888c4c"
+  ]
+}

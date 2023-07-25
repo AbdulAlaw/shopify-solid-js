@@ -1,0 +1,46 @@
+<style>
+  .product-meida img {
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+</style>
+<section class="container">
+  {% if section.settings.heading != blank %}
+    <h1>{{ section.settings.heading }}</h1>
+  {% endif %}
+  {%- assign collection = collections[section.settings.collection] -%}
+  <ul class="feature-collection">
+    {% for product in collection.products %}
+        {% render 'product-card', card_product: product %}
+    {% endfor %}
+  </ul>
+
+</section>
+
+{% schema %}
+{
+  "name": "Feature Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id":"collection",
+      "label": "Feature Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Collection"
+    }
+  ]
+
+
+
+}
+{% endschema %}
